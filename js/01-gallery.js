@@ -6,22 +6,36 @@ const gallery = document.querySelector('.gallery');
 
 galleryItems.forEach((item, index) => {
 
-    const li = document.createElement("li");
-    li.classList.add("gallery__item");
+    // const li = document.createElement("li");
+    // li.classList.add("gallery__item");
 
-    const link = document.createElement("a");
-    link.classList.add("gallery__link");
-    link.href = item.original;
+    // const link = document.createElement("a");
+    // link.classList.add("gallery__link");
+    // link.href = item.original;
 
-    const newImage = document.createElement("img");
-    newImage.classList.add("gallery__image");
-    newImage.src = item.preview;
-    newImage.setAttribute("data-source", item.original);
-    newImage.alt = item.description;
+    // const newImage = document.createElement("img");
+    // newImage.classList.add("gallery__image");
+    // newImage.src = item.preview;
+    // newImage.setAttribute("data-source", item.original);
+    // newImage.alt = item.description;
 
-    link.append(newImage);
-    li.append(link);
-    gallery.append(li);
+    // link.append(newImage);
+    // li.append(link);
+    // gallery.append(li);
+
+    gallery.insertAdjacentHTML("beforeend", `
+        <li class="gallery__item">
+            <a class="gallery__link" href="${item.original}">
+                <img
+                    class="gallery__image"
+                    src="${item.preview}"
+                    data-source="${item.original}"
+                    alt="${item.description}"
+                />
+            </a>
+        </li>
+    `);
+
 });
 
 
